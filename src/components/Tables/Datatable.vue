@@ -285,7 +285,7 @@ const Datatable = {
     },
     previous: {
       type: String,
-      default: 'Previos'
+      default: 'Previous'
     },
     arrows: {
       type: Boolean,
@@ -416,6 +416,11 @@ const Datatable = {
     sort(field, sort) {
       this.recentSort = {field, sort};
       if (this.sorting) {
+        if(this.rows[0] == undefined){
+          setTimeout(() => {
+            this.rows.sort((a, b) => (a['datetime'] > b['datetime'] ? -1 : 1));
+          }, 1000);
+        }
         sort === 'asc' ?
           this.rows.sort((a, b) => (a[field] > b[field] ? 1 : -1)) :
           this.rows.sort((a, b) => (a[field] > b[field] ? -1 : 1));
