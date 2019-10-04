@@ -537,6 +537,7 @@ const Datatable = {
   watch: {
     data(newVal) {
       this.columns = newVal.columns;
+      this.rows = newVal.rows;
     },
     rows(){
       this.filterArray();
@@ -578,10 +579,6 @@ const Datatable = {
 export default Datatable;
 export { Datatable as mdbDatatable };
 </script>
-
-<style scoped>
-
-</style>
 
 <style>
 .pagination {
